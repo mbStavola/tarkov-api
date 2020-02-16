@@ -58,6 +58,9 @@ func (client *TarkovClient) Get(path string, ret interface{}) error {
 	}
 	defer response.Body.Close()
 
+	// ! Apparently, the responses are compressed
+	// ! However, no header is sent to let us know that
+	// ! Therefore, we must manually initiate the deflate
 	deflatedBody := flate.NewReader(response.Body)
 	defer deflatedBody.Close()
 

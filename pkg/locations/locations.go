@@ -26,7 +26,7 @@ type Location struct {
 	MainImage     string `json:"main_image"`
 }
 
-func (api LocationsAPI) Locations() ([]Location, error) {
+func (api LocationsAPI) AllLocations() ([]Location, error) {
 	return api.LocationsByName("")
 }
 
