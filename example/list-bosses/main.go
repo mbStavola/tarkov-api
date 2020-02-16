@@ -9,7 +9,7 @@ import (
 func main() {
 	api := tarkov.NewTarkovAPI("dummy-session-id")
 
-	bosses, err := api.Characters().Bosses()
+	bosses, err := api.Characters.Bosses()
 	if err != nil {
 		fmt.Println(err)
 		return

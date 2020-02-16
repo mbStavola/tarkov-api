@@ -11,35 +11,25 @@ import (
 )
 
 type TarkovAPI struct {
-	client *client.TarkovClient
+	client     *client.TarkovClient
+	Characters characters.CharactersAPI
+	Economy    economy.EconomyAPI
+	Items      items.ItemsAPI
+	Locations  locations.LocationsAPI
 }
 
 func NewTarkovAPI(sessionID string) TarkovAPI {
-	client := client.NewClient(nil, sessionID)
-	return TarkovAPI{
-		client: &client,
-	}
+	return NewCustomTarkovAPI(nil, sessionID)
 }
 
 func NewCustomTarkovAPI(httpClient *http.Client, sessionID string) TarkovAPI {
 	client := client.NewClient(httpClient, sessionID)
+
 	return TarkovAPI{
-		client: &client,
+		client:     &client,
+		Characters: characters.NewCharactersAPI(&client),
+		Economy:    economy.NewEconomyAPI(&client),
+		Items:      items.NewItemsAPI(&client),
+		Locations:  locations.NewLocationsAPI(&client),
 	}
-}
-
-func (api *TarkovAPI) Economy() economy.EconomyAPI {
-	return economy.NewEconomyAPI(api.client)
-}
-
-func (api *TarkovAPI) Characters() characters.CharactersAPI {
-	return characters.NewCharactersAPI(api.client)
-}
-
-func (api *TarkovAPI) Locations() locations.LocationsAPI {
-	return locations.NewLocationsAPI(api.client)
-}
-
-func (api *TarkovAPI) Items() items.ItemsAPI {
-	return items.NewItemsAPI(api.client)
 }

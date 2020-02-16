@@ -25,7 +25,7 @@ type Boss struct {
 	Location              locations.Location `json:"location"`
 }
 
-func (api CharactersAPI) Bosses() ([]Boss, error) {
+func (api *CharactersAPI) Bosses() ([]Boss, error) {
 	path := "bosses"
 
 	var bosses []Boss
@@ -36,7 +36,7 @@ func (api CharactersAPI) Bosses() ([]Boss, error) {
 	return bosses, nil
 }
 
-func (api CharactersAPI) BossesByLocation(locationName string) ([]Boss, error) {
+func (api *CharactersAPI) BossesByLocation(locationName string) ([]Boss, error) {
 	path := fmt.Sprintf("bosses/%s", locationName)
 
 	var bosses []Boss
@@ -56,7 +56,7 @@ type Dealer struct {
 	Image       string `json:"image"`
 }
 
-func (api CharactersAPI) Dealers() ([]Dealer, error) {
+func (api *CharactersAPI) Dealers() ([]Dealer, error) {
 	path := "dealers"
 
 	var dealers []Dealer

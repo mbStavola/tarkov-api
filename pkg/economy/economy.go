@@ -19,7 +19,7 @@ type Currency struct {
 	Symbol       string `json:"symbol"`
 }
 
-func (api EconomyAPI) Currencies() ([]Currency, error) {
+func (api *EconomyAPI) Currencies() ([]Currency, error) {
 	path := "currencies"
 
 	var currencies []Currency

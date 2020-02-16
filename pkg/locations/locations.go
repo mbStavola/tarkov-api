@@ -26,11 +26,11 @@ type Location struct {
 	MainImage     string `json:"main_image"`
 }
 
-func (api LocationsAPI) AllLocations() ([]Location, error) {
+func (api *LocationsAPI) AllLocations() ([]Location, error) {
 	return api.LocationsByName("")
 }
 
-func (api LocationsAPI) LocationsByName(name string) ([]Location, error) {
+func (api *LocationsAPI) LocationsByName(name string) ([]Location, error) {
 	path := fmt.Sprintf("currencies/%s", name)
 
 	var locations []Location

@@ -30,13 +30,13 @@ It might be a bit tricky to get your session ID, but if you can use Wireshark to
 
 Each individual API is split off of the `TarkovAPI` struct like so:
 
-- Locations => `api.Locations()`
-- Economy => `api.Economy()`
-- Items => `api.Items()`
+- Locations => `api.Locations`
+- Economy => `api.Economy`
+- Items => `api.Items`
 
 and so on. Within these scoped APIs, you can fetch the specific data you need:
 
-- Ammunition types => `api.Items().AmmunitionTypes()`
+- Ammunition types => `api.Items.AmmunitionTypes()`
 - Ammunition => `api.Items.Ammunition("9x18")`
 
 Putting this all together, here is how you'd query location information: 
@@ -49,7 +49,7 @@ func main() {
     api := tarkov.NewTarkovAPI("this-is-your-session-id")
 
     // Access the Locations API and search locations by name
-    searchedLocations, err := api.Locations().LocationsByName("Interchange")
+    searchedLocations, err := api.Locations.LocationsByName("Interchange")
 
     // ...
 }

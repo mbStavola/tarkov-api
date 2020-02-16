@@ -25,7 +25,7 @@ type AmmunitionType struct {
 	Image   string `json:"image"`
 }
 
-func (api ItemsAPI) AmmunitionTypes() ([]AmmunitionType, error) {
+func (api *ItemsAPI) AmmunitionTypes() ([]AmmunitionType, error) {
 	path := "ammunition"
 
 	var types []AmmunitionType
@@ -48,7 +48,7 @@ type Ammunition struct {
 	SoldBy              string  `json:"sold_by"`
 }
 
-func (api ItemsAPI) Ammunition(caliber string) ([]Ammunition, error) {
+func (api *ItemsAPI) Ammunition(caliber string) ([]Ammunition, error) {
 	path := fmt.Sprintf("currencies/%s", caliber)
 
 	var ammunition []Ammunition
